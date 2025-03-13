@@ -1,0 +1,20 @@
+{
+    "name": "Restaurante Delícias Caseiras",
+    "short_name": "Delícias Caseiras",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffcc00",
+    "icons": [
+      {
+        "src": "/src/images/prato.webp",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/src/images/prato.webp",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
