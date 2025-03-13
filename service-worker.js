@@ -19,6 +19,8 @@ const urlsToCache = [
   "/src/images/prato.webp"
 
 ];
+const cacheableExtensions = [".css", ".js", ".webp", ".svg"];
+
 
 self.addEventListener("install", event => {
     event.waitUntil(
@@ -34,15 +36,13 @@ self.addEventListener("install", event => {
         if (response) {
           return response;
         }
-        
+  
         return fetch(event.request).then(networkResponse => {
           return caches.open(CACHE_NAME).then(cache => {
-            if (
-              event.request.url.includes("/src/styles/") ||
-              event.request.url.includes(".js") ||
-              event.request.url.includes(".webp") ||
-              event.request.url.includes(".svg")
-            ) {
+            const url = event.request.url;
+            const isCacheable = cacheableExtensions.some(ext => url.endsWith(ext));
+  
+            if (isCacheable) {
               cache.put(event.request, networkResponse.clone());
             }
             return networkResponse;
